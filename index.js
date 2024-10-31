@@ -9,9 +9,6 @@ function OpenaiObject(method = "chat.completions", model = "gpt-4o-mini", data =
     this.body[key] = data[key]
 }
 
-
-
-const url = "https://openai-api-worker.slendyx2002.workers.dev/"
 const object = new OpenaiObject("chat.completions", "gpt-4o-mini", 
   {messages: [
     {
@@ -25,7 +22,10 @@ const object = new OpenaiObject("chat.completions", "gpt-4o-mini",
   ]})
 
 
-async function getOpenai(object, url = "https://openai-api-worker.slendyx2002.workers.dev/"){
+async function getOpenai(object){
+  const fileResponse = await fetch("./workerLink.txt.local")
+  const url = await fileResponse.text()
+
   const response = await fetch(url, {
     method:'POST',
     headers:

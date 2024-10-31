@@ -1,6 +1,3 @@
-//https://openai-api-worker.slendyx2002.workers.dev/
-
-
 function OpenaiObject(method = "chat.completions", model = "gpt-4o-mini", data = {}){
   this.method = method
   this.body = {}
